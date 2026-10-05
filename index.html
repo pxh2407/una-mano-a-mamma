@@ -37,20 +37,40 @@
   a.scelta:active { transform: translateY(4px); box-shadow: 0 2px 0 var(--blu); }
   .voce { background: var(--arancio); color: var(--blu); }
   .karaoke { background: var(--blu); color: #fff; }
+  .galleria { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; width: 100%; max-width: 460px; margin-top: 30px; }
+  .galleria img { width: 100%; border-width: 3px; border-radius: 8px; box-shadow: none; cursor: pointer; }
 </style>
 </head>
 <body>
   <h1 id="titolo">Una mano a&nbsp;mamma</h1>
   <p class="sotto">Passi grandi, zaino in&nbsp;spalla!</p>
-  <img src="disegno-v1.jpg" alt="Disegno a pastelli: uno zaino arancione su un viale alberato, il sole e una porta rossa">
+  <img id="grande" src="disegno-v1.jpg" alt="Disegno a pastelli: uno zaino arancione su un viale alberato, il sole e una porta rossa">
   <div class="scelte">
     <a class="scelta voce" href="voce.html">▶ La canzone<small>con la voce e le parole che scorrono</small></a>
     <a class="scelta karaoke" href="karaoke.html">🎤 Karaoke<small>solo musica: canta tu!</small></a>
+  </div>
+  <!-- le immagini del video: toccandone una diventa grande in alto -->
+  <div class="galleria">
+    <img src="disegno-01-scarpe-v1.jpg" alt="Scarpette nuove coi lacci: il gran giorno!">
+    <img src="disegno-00-zaino-v1.jpg" alt="Disegno a pastelli: lo zaino nel viale alberato">
+    <img src="disegno-02-campana-v1.jpg" alt="Il gioco della campana col gesso">
+    <img src="disegno-03-cuori-v1.jpg" alt="Due cuori grandi e uno piccolo: colme di tenerezza">
+    <img src="disegno-04-aeroplano-v1.jpg" alt="Aeroplanino di carta: si va!">
+    <img src="disegno-05-famiglia-v1.jpg" alt="Mamma, bimbo e papà mano nella mano">
+    <img src="disegno-06-stereo-v1.jpg" alt="Lo stereo con le note: uno, due e tre, hip hop!">
+    <img src="disegno-07-goccia-v1.jpg" alt="Una lacrimuccia di gioia accanto a un cuore">
+    <img src="disegno-08-scuola-v1.jpg" alt="La scuola con la bandiera">
+    <img src="disegno-09-gradini-v1.jpg" alt="I gradini colorati verso la porta: buon viaggio!">
+    <img src="disegno-10-strada-v1.jpg" alt="La strada verso l'arcobaleno: il futuro comincia adesso!">
   </div>
 <script>
   // ogni lettera del titolo di un colore diverso, come i bambini
   const t = document.getElementById("titolo");
   t.innerHTML = [...t.textContent].map(c => c === " " ? " " : "<span>" + c + "</span>").join("");
+  const g = document.getElementById("grande");
+  document.querySelectorAll(".galleria img").forEach(i => i.onclick = () => {
+    g.src = i.src; g.alt = i.alt; g.scrollIntoView({ behavior: "smooth", block: "center" });
+  });
 </script>
 </body>
 </html>
